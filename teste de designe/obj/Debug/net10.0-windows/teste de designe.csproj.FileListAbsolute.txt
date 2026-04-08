@@ -1,0 +1,76 @@
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\teste de designe.exe
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\teste de designe.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\teste de designe.deps.json
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\teste de designe.runtimeconfig.json
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\teste de designe.pdb
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Bcl.Cryptography.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Data.SqlClient.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Data.SqlClient.Extensions.Abstractions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Data.SqlClient.Internal.Logging.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Options.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.Extensions.Primitives.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Logging.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\cs\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\de\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\es\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\fr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\it\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\ja\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\ko\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\pl\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\pt-BR\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\ru\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\tr\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\zh-Hans\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\zh-Hant\Microsoft.Data.SqlClient.resources.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\unix\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win\lib\net9.0\Microsoft.Data.SqlClient.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\bin\Debug\net10.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.PaginaAgendamentoDoula.resources
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.PaginaInformativa.resources
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.PaginaLogin.resources
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.Properties.Resources.resources
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.TelaDeCadastro.resources
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.TelaDePagamento.resources
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.TelaHistoricoDeAgendamento.resources
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.AssemblyInfoInputs.cache
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.AssemblyInfo.cs
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.sourcelink.json
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de.C6DA6173.Up2Date
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\refint\teste de designe.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.pdb
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste de designe.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\ref\teste de designe.dll
+C:\Users\Admin\Desktop\Kaique Curso\TesteJogo\teste de designe\teste de designe\obj\Debug\net10.0-windows\teste_de_designe.PainelAdmin.resources

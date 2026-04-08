@@ -1,0 +1,146 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|c:\\users\\admin\\desktop\\kaique curso\\testejogo\\teste de designe\\teste de designe\\paginainformativa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|solutionrelative:teste de designe\\paginainformativa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|c:\\users\\admin\\desktop\\kaique curso\\testejogo\\teste de designe\\teste de designe\\paginalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|solutionrelative:teste de designe\\paginalogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|c:\\users\\admin\\desktop\\kaique curso\\testejogo\\teste de designe\\teste de designe\\paineladmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|solutionrelative:teste de designe\\paineladmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|c:\\users\\admin\\desktop\\kaique curso\\testejogo\\teste de designe\\teste de designe\\paineladmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|solutionrelative:teste de designe\\paineladmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|c:\\users\\admin\\desktop\\kaique curso\\testejogo\\teste de designe\\teste de designe\\paginaagendamentodoula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|solutionrelative:teste de designe\\paginaagendamentodoula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|c:\\users\\admin\\desktop\\kaique curso\\testejogo\\teste de designe\\teste de designe\\teladepagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|solutionrelative:teste de designe\\teladepagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|c:\\users\\admin\\desktop\\kaique curso\\testejogo\\teste de designe\\teste de designe\\telahistoricodeagendamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{81185EB0-FFAC-1D02-FCAA-815751066E05}|teste de designe\\teste de designe.csproj|solutionrelative:teste de designe\\telahistoricodeagendamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PaginaInformativa.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PaginaInformativa.cs",
+              "RelativeDocumentMoniker": "teste de designe\\PaginaInformativa.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PaginaInformativa.cs",
+              "RelativeToolTip": "teste de designe\\PaginaInformativa.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T18:22:17.304Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PainelAdmin.cs [Projeto]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PainelAdmin.cs",
+              "RelativeDocumentMoniker": "teste de designe\\PainelAdmin.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PainelAdmin.cs [Projeto]",
+              "RelativeToolTip": "teste de designe\\PainelAdmin.cs [Projeto]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T17:47:29.278Z",
+              "EditorCaption": " [Projeto]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PainelAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PainelAdmin.cs",
+              "RelativeDocumentMoniker": "teste de designe\\PainelAdmin.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PainelAdmin.cs",
+              "RelativeToolTip": "teste de designe\\PainelAdmin.cs",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAIwDQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T17:19:06.954Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaginaLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PaginaLogin.cs",
+              "RelativeDocumentMoniker": "teste de designe\\PaginaLogin.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PaginaLogin.cs",
+              "RelativeToolTip": "teste de designe\\PaginaLogin.cs",
+              "ViewState": "AgIAAHQAAAAAAAAAAAAAAJgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T16:43:32.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TelaDePagamento.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\TelaDePagamento.cs",
+              "RelativeDocumentMoniker": "teste de designe\\TelaDePagamento.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\TelaDePagamento.cs",
+              "RelativeToolTip": "teste de designe\\TelaDePagamento.cs",
+              "ViewState": "AgIAAGcAAAAAAAAAAAAIwI4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T13:48:33.45Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaginaAgendamentoDoula.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PaginaAgendamentoDoula.cs",
+              "RelativeDocumentMoniker": "teste de designe\\PaginaAgendamentoDoula.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\PaginaAgendamentoDoula.cs",
+              "RelativeToolTip": "teste de designe\\PaginaAgendamentoDoula.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUEAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T13:48:59.974Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TelaHistoricoDeAgendamento.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\TelaHistoricoDeAgendamento.cs",
+              "RelativeDocumentMoniker": "teste de designe\\TelaHistoricoDeAgendamento.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\Kaique Curso\\TesteJogo\\teste de designe\\teste de designe\\TelaHistoricoDeAgendamento.cs",
+              "RelativeToolTip": "teste de designe\\TelaHistoricoDeAgendamento.cs",
+              "ViewState": "AgIAAA4BAAAAAAAAAAAAAJkBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-07T14:59:16.411Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
