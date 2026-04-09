@@ -39,12 +39,11 @@
             txtE_mail = new TextBox();
             lblE_mail = new Label();
             btnCadastrar = new Button();
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            panelTransparente1.SuspendLayout();
             SuspendLayout();
-            // 
+
             // pictureBox1
-            // 
             pictureBox1.Dock = DockStyle.Fill;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(0, 0);
@@ -53,26 +52,15 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            // 
+
             // panelTransparente1
-            // 
-            panelTransparente1.BackColor = Color.Transparent;
-            panelTransparente1.Controls.Add(lblE_Senha);
-            panelTransparente1.Controls.Add(btnEsqueciSenha);
-            panelTransparente1.Controls.Add(btnEntrar);
-            panelTransparente1.Controls.Add(lblNaoTemConta);
-            panelTransparente1.Controls.Add(txtSenha);
-            panelTransparente1.Controls.Add(txtE_mail);
-            panelTransparente1.Controls.Add(lblE_mail);
-            panelTransparente1.Controls.Add(btnCadastrar);
-            panelTransparente1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            panelTransparente1.BackColor = Color.FromArgb(100, 160, 220, 190);
             panelTransparente1.Location = new Point(48, 257);
             panelTransparente1.Name = "panelTransparente1";
             panelTransparente1.Size = new Size(229, 247);
             panelTransparente1.TabIndex = 1;
-            // 
+
             // lblE_Senha
-            // 
             lblE_Senha.AutoSize = true;
             lblE_Senha.BackColor = Color.Transparent;
             lblE_Senha.Font = new Font("MV Boli", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -83,9 +71,8 @@
             lblE_Senha.TabIndex = 8;
             lblE_Senha.Text = "Senha";
             lblE_Senha.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+
             // btnEsqueciSenha
-            // 
             btnEsqueciSenha.BackColor = Color.MediumSeaGreen;
             btnEsqueciSenha.FlatAppearance.BorderSize = 0;
             btnEsqueciSenha.FlatStyle = FlatStyle.Flat;
@@ -97,9 +84,8 @@
             btnEsqueciSenha.TabIndex = 7;
             btnEsqueciSenha.Text = "Esqueci minha senha";
             btnEsqueciSenha.UseVisualStyleBackColor = false;
-            // 
+
             // btnEntrar
-            // 
             btnEntrar.BackColor = Color.MediumSeaGreen;
             btnEntrar.FlatAppearance.BorderSize = 0;
             btnEntrar.FlatStyle = FlatStyle.Flat;
@@ -112,9 +98,8 @@
             btnEntrar.Text = "Entrar";
             btnEntrar.UseVisualStyleBackColor = false;
             btnEntrar.Click += btnEntrar_Click;
-            // 
+
             // lblNaoTemConta
-            // 
             lblNaoTemConta.AutoSize = true;
             lblNaoTemConta.Font = new Font("Segoe UI", 8.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblNaoTemConta.ForeColor = Color.DarkSlateGray;
@@ -124,9 +109,8 @@
             lblNaoTemConta.TabIndex = 4;
             lblNaoTemConta.Text = "Não tem uma conta ?";
             lblNaoTemConta.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+
             // txtSenha
-            // 
             txtSenha.BackColor = Color.White;
             txtSenha.BorderStyle = BorderStyle.None;
             txtSenha.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -134,9 +118,8 @@
             txtSenha.Name = "txtSenha";
             txtSenha.Size = new Size(170, 18);
             txtSenha.TabIndex = 3;
-            // 
+
             // txtE_mail
-            // 
             txtE_mail.BackColor = Color.White;
             txtE_mail.BorderStyle = BorderStyle.None;
             txtE_mail.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -144,9 +127,8 @@
             txtE_mail.Name = "txtE_mail";
             txtE_mail.Size = new Size(170, 18);
             txtE_mail.TabIndex = 2;
-            // 
+
             // lblE_mail
-            // 
             lblE_mail.AutoSize = true;
             lblE_mail.BackColor = Color.Transparent;
             lblE_mail.Font = new Font("MV Boli", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -157,9 +139,8 @@
             lblE_mail.TabIndex = 1;
             lblE_mail.Text = "E-mail";
             lblE_mail.TextAlign = ContentAlignment.MiddleCenter;
-            // 
+
             // btnCadastrar
-            // 
             btnCadastrar.BackColor = Color.MediumSeaGreen;
             btnCadastrar.FlatAppearance.BorderSize = 0;
             btnCadastrar.FlatStyle = FlatStyle.Flat;
@@ -172,14 +153,24 @@
             btnCadastrar.Text = "Cadastre-se";
             btnCadastrar.UseVisualStyleBackColor = false;
             btnCadastrar.Click += btnCadastrar_Click;
-            // 
-            // PaginaLogin
-            // 
+
+            // ADICIONAR CONTROLES DENTRO DO PAINEL
+            panelTransparente1.Controls.Add(lblE_Senha);
+            panelTransparente1.Controls.Add(btnEsqueciSenha);
+            panelTransparente1.Controls.Add(btnEntrar);
+            panelTransparente1.Controls.Add(lblNaoTemConta);
+            panelTransparente1.Controls.Add(txtSenha);
+            panelTransparente1.Controls.Add(txtE_mail);
+            panelTransparente1.Controls.Add(lblE_mail);
+            panelTransparente1.Controls.Add(btnCadastrar);
+
+            // ADICIONAR O PAINEL DENTRO DA IMAGEM
+            pictureBox1.Controls.Add(panelTransparente1);
+
+            // FORMULÁRIO
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImageLayout = ImageLayout.None;
             ClientSize = new Size(345, 537);
-            Controls.Add(panelTransparente1);
             Controls.Add(pictureBox1);
             DoubleBuffered = true;
             MaximizeBox = false;
@@ -188,9 +179,8 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            panelTransparente1.ResumeLayout(false);
-            panelTransparente1.PerformLayout();
             ResumeLayout(false);
         }
 

@@ -36,6 +36,11 @@ namespace teste_de_designe
             "14:00", "15:00", "16:00", "17:00"
         };
 
+        // CONFIGURAÇÃO DO E-MAIL DO SISTEMA
+        private const string EmailSistema = "projetodoulaefuro01@gmail.com";
+        private const string SenhaAppEmail = "qvxmylkwzrgqtiee";
+        private const string NomeRemetente = "Sistema Doula";
+
         // NOVO AGENDAMENTO
         public PaginaAgendamentoDoula(string email)
         {
@@ -134,16 +139,16 @@ namespace teste_de_designe
                 }
                 else
                 {
-                    if (agendamentoExistente.ServicoItem.Contains("Titânio") || agendamentoExistente.ServicoItem.Contains("Titanio"))
+                    if ((agendamentoExistente.ServicoItem ?? "").Contains("Titânio") || (agendamentoExistente.ServicoItem ?? "").Contains("Titanio"))
                         ccbAgendaFuro_Titanio.Checked = true;
 
-                    if (agendamentoExistente.ServicoItem.Contains("Aço") || agendamentoExistente.ServicoItem.Contains("Aco"))
+                    if ((agendamentoExistente.ServicoItem ?? "").Contains("Aço") || (agendamentoExistente.ServicoItem ?? "").Contains("Aco"))
                         ccbAgendaFuro_Aco.Checked = true;
 
-                    if (agendamentoExistente.ServicoItem.Contains("Ouro"))
+                    if ((agendamentoExistente.ServicoItem ?? "").Contains("Ouro"))
                         ccbAgendaFuro_Ouro.Checked = true;
 
-                    if (agendamentoExistente.ServicoItem.Contains("Prata"))
+                    if ((agendamentoExistente.ServicoItem ?? "").Contains("Prata"))
                         ccbAgendaFuro_Prata.Checked = true;
 
                     quantidadeFuroPorHorario.Clear();
@@ -429,6 +434,17 @@ WHERE Data = @Data
             return servicos;
         }
 
+        private EmailService CriarEmailService()
+        {
+            return new EmailService(
+                "smtp.gmail.com",
+                587,
+                EmailSistema,
+                SenhaAppEmail,
+                NomeRemetente
+            );
+        }
+
         private int SalvarAgendamentoCabecalho(
             string email,
             DateTime data,
@@ -446,27 +462,78 @@ WHERE Data = @Data
 
                 string query = @"
 INSERT INTO Agendamentos
-(Data, ValorTotal, QuantidadePessoas, NomeCompanheiro, NomeBebe, LocalParto, DPP, EquipeMedica, Status, Email, Horarios, Servicos)
+(
+    Data, ValorTotal, QuantidadePessoas,
+    NomeCompanheiro, NomeBebe, LocalParto,
+    DPP, EquipeMedica, Status,
+    Email, Horarios, Servicos,
+    EmailCliente, TelefoneCliente,
+    NomePrestador, EmailPrestador, TelefonePrestador,
+    Notificacao24hEnviada, Notificacao1hEnviada
+)
 OUTPUT INSERTED.Id
 VALUES
-(@Data, @ValorTotal, @QuantidadePessoas, @NomeCompanheiro, @NomeBebe, @LocalParto, @DPP, @EquipeMedica, @Status, @Email, @Horarios, @Servicos)";
+(
+    @Data, @ValorTotal, @QuantidadePessoas,
+    @NomeCompanheiro, @NomeBebe, @LocalParto,
+    @DPP, @EquipeMedica, @Status,
+    @Email, @Horarios, @Servicos,
+    @EmailCliente, @TelefoneCliente,
+    @NomePrestador, @EmailPrestador, @TelefonePrestador,
+    0, 0
+)";
 
-                SqlCommand cmd = new SqlCommand(query, conn);
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Data", data.Date);
+                    cmd.Parameters.AddWithValue("@ValorTotal", total);
+                    cmd.Parameters.AddWithValue("@QuantidadePessoas", quantidadePessoasFuro);
 
-                cmd.Parameters.AddWithValue("@Data", data.Date);
-                cmd.Parameters.AddWithValue("@ValorTotal", total);
-                cmd.Parameters.AddWithValue("@QuantidadePessoas", quantidadePessoasFuro);
-                cmd.Parameters.AddWithValue("@NomeCompanheiro", string.IsNullOrWhiteSpace(nomeCompanheiro) ? (object)DBNull.Value : nomeCompanheiro);
-                cmd.Parameters.AddWithValue("@NomeBebe", string.IsNullOrWhiteSpace(nomeBebe) ? (object)DBNull.Value : nomeBebe);
-                cmd.Parameters.AddWithValue("@LocalParto", string.IsNullOrWhiteSpace(localParto) ? (object)DBNull.Value : localParto);
-                cmd.Parameters.AddWithValue("@DPP", dpp == DateTime.MinValue ? (object)DBNull.Value : dpp.Date);
-                cmd.Parameters.AddWithValue("@EquipeMedica", string.IsNullOrWhiteSpace(equipeMedica) ? (object)DBNull.Value : equipeMedica);
-                cmd.Parameters.AddWithValue("@Status", "Ativo");
-                cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@Horarios", string.Join(",", horariosSelecionadosDoula.Concat(quantidadeFuroPorHorario.Keys).Distinct()));
-                cmd.Parameters.AddWithValue("@Servicos", string.Join(", ", ObterServicosSelecionados()));
+                    cmd.Parameters.AddWithValue("@NomeCompanheiro",
+                        string.IsNullOrWhiteSpace(nomeCompanheiro)
+                        ? (object)DBNull.Value
+                        : nomeCompanheiro);
 
-                return Convert.ToInt32(cmd.ExecuteScalar());
+                    cmd.Parameters.AddWithValue("@NomeBebe",
+                        string.IsNullOrWhiteSpace(nomeBebe)
+                        ? (object)DBNull.Value
+                        : nomeBebe);
+
+                    cmd.Parameters.AddWithValue("@LocalParto",
+                        string.IsNullOrWhiteSpace(localParto)
+                        ? (object)DBNull.Value
+                        : localParto);
+
+                    cmd.Parameters.AddWithValue("@DPP",
+                        dpp == DateTime.MinValue
+                        ? (object)DBNull.Value
+                        : dpp.Date);
+
+                    cmd.Parameters.AddWithValue("@EquipeMedica",
+                        string.IsNullOrWhiteSpace(equipeMedica)
+                        ? (object)DBNull.Value
+                        : equipeMedica);
+
+                    cmd.Parameters.AddWithValue("@Status", "Ativo");
+                    cmd.Parameters.AddWithValue("@Email", email);
+
+                    cmd.Parameters.AddWithValue("@Horarios",
+                        string.Join(",", horariosSelecionadosDoula
+                        .Concat(quantidadeFuroPorHorario.Keys)
+                        .Distinct()));
+
+                    cmd.Parameters.AddWithValue("@Servicos",
+                        string.Join(", ", ObterServicosSelecionados()));
+
+                    cmd.Parameters.AddWithValue("@EmailCliente", emailDoUsuario);
+                    cmd.Parameters.AddWithValue("@TelefoneCliente", "11999999999");
+
+                    cmd.Parameters.AddWithValue("@NomePrestador", "Doula Responsável");
+                    cmd.Parameters.AddWithValue("@EmailPrestador", EmailSistema);
+                    cmd.Parameters.AddWithValue("@TelefonePrestador", "11999999999");
+
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
             }
         }
 
@@ -597,16 +664,77 @@ WHERE Id = @Id";
 
                 using (SqlCommand cmd = new SqlCommand(sqlUpdate, conn))
                 {
-                    cmd.Parameters.AddWithValue("@Id", agendamentoId);
                     cmd.Parameters.AddWithValue("@Data", temAtivo ? datasAtivas.Min().Date : (object)DateTime.Today);
                     cmd.Parameters.AddWithValue("@Horarios", temAtivo ? string.Join(",", horariosAtivos.Distinct()) : "");
                     cmd.Parameters.AddWithValue("@Servicos", temAtivo ? string.Join(", ", servicosAtivos.Distinct()) : "");
                     cmd.Parameters.AddWithValue("@ValorTotal", valorTotalAtivo);
                     cmd.Parameters.AddWithValue("@QuantidadePessoas", quantidadeFuroAtiva);
                     cmd.Parameters.AddWithValue("@Status", temAtivo ? "Ativo" : "Cancelado");
+                    cmd.Parameters.AddWithValue("@Id", agendamentoId);
 
                     cmd.ExecuteNonQuery();
                 }
+            }
+        }
+
+        private void ResetarFlagsNotificacao(int agendamentoId)
+        {
+            using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
+            {
+                conn.Open();
+
+                string sql = @"
+UPDATE Agendamentos
+SET Notificacao24hEnviada = 0,
+    Notificacao1hEnviada = 0
+WHERE Id = @Id";
+
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@Id", agendamentoId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private void EnviarConfirmacaoDeAgendamento(
+            int idAgendamento,
+            string emailCliente,
+            DateTime data,
+            IEnumerable<string> horarios,
+            IEnumerable<string> servicos,
+            decimal total,
+            bool reagendamento)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(emailCliente))
+                    return;
+
+                EmailService emailService = CriarEmailService();
+
+                string assunto = reagendamento
+                    ? "Seu agendamento foi reagendado com sucesso"
+                    : "Confirmação do seu agendamento";
+
+                string corpo = $@"Olá!
+
+{(reagendamento ? "Seu agendamento foi reagendado com sucesso." : "Seu agendamento foi confirmado com sucesso.")}
+
+Número do agendamento: {idAgendamento}
+Data: {data:dd/MM/yyyy}
+Horário(s): {string.Join(", ", horarios.Distinct())}
+Serviço(s): {string.Join(", ", servicos.Distinct())}
+Valor total: R$ {total:N2}
+
+Obrigada por agendar conosco!
+Sistema Doula";
+
+                emailService.EnviarEmail(emailCliente, assunto, corpo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Agendamento salvo, mas houve erro ao enviar o e-mail:\n" + ex.Message);
             }
         }
 
@@ -804,7 +932,7 @@ WHERE Id = @Id";
 UPDATE AgendamentoServicos
 SET Data = @Data,
     Horario = @Horario,
-Status = 'Ativo'
+    Status = 'Ativo'
 WHERE Id = @Id";
 
                             using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -836,7 +964,6 @@ WHERE Id = @Id";
                                 return;
                             }
 
-                            // Atualiza os registros ativos do grupo antigo para o novo horário/data
                             string sqlUpdateGrupo = @"
 UPDATE TOP (@Quantidade) AgendamentoServicos
 SET Data = @NovaData,
@@ -857,13 +984,24 @@ WHERE AgendamentoId = @AgendamentoId
                                 cmdUpdate.Parameters.AddWithValue("@Servico", servicoAtual);
                                 cmdUpdate.Parameters.AddWithValue("@DataAntiga", agendamentoExistente.Data.Date);
                                 cmdUpdate.Parameters.AddWithValue("@HorarioAntigo", horarioAntigo);
-
                                 cmdUpdate.ExecuteNonQuery();
                             }
                         }
                     }
 
                     AtualizarResumoAgendamentoPai(AgendamentoIdPai.Value);
+                    ResetarFlagsNotificacao(AgendamentoIdPai.Value);
+
+                    EnviarConfirmacaoDeAgendamento(
+                        AgendamentoIdPai.Value,
+                        emailDoUsuario,
+                        dataSelecionada,
+                        horariosSelecionadosDoula.Concat(quantidadeFuroPorHorario.Keys),
+                        servicos,
+                        total,
+                        true
+                    );
+
                     MessageBox.Show("Reagendamento realizado com sucesso! 🔄");
                     LimparFormulario();
                     Close();
@@ -911,6 +1049,17 @@ WHERE AgendamentoId = @AgendamentoId
                     {
                         SalvarItensAgendamento(idAgendamento);
                         AtualizarResumoAgendamentoPai(idAgendamento);
+
+                        EnviarConfirmacaoDeAgendamento(
+                            idAgendamento,
+                            emailDoUsuario,
+                            dataSelecionada,
+                            horariosSelecionadosDoula.Concat(quantidadeFuroPorHorario.Keys),
+                            servicos,
+                            total,
+                            false
+                        );
+
                         MessageBox.Show("Agendamento salvo com sucesso! ✅");
                     }
                 }
@@ -1059,7 +1208,7 @@ WHERE AgendamentoId = @AgendamentoId
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
-        public string CPF { get; set; } // Adicionando a propriedade CPF
+        public string CPF { get; set; }
 
         public string Status { get; set; }
 

@@ -1,24 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace teste_de_designe
 {
     public partial class PainelAdmin : Form
     {
-        public string adminEmail;  // Armazena o e-mail do administrador
-        List<Agendamento> listaAgendamentos = new List<Agendamento>();  // Lista de agendamentos
+        public string adminEmail;
+
+        DataTable tabelaAgendamentos = new DataTable();
+        bool atualizandoPainel = false;
 
         public PainelAdmin(string email)
         {
             InitializeComponent();
+
             adminEmail = email;
-            CarregarAgendamentos();  // Carrega os agendamentos ao inicializar o painel
+
+            dgvPainelAdm_Agendamentos.AutoGenerateColumns = true;
+
+            txtPainelAdm_Nome.TextChanged += Filtro_TextChanged;
+            txtPainelAdm_Email.TextChanged += Filtro_TextChanged;
+            mskPainelAdm_Telefone.TextChanged += Filtro_TextChanged;
+            mskPainelAdm_CPF.TextChanged += Filtro_TextChanged;
         }
 
-        // Carregar todos os agendamentos do banco
+        private void PainelAdmin_Load(object sender, EventArgs e)
+        {
+            CarregarHorariosAdmin();
+            CarregarAgendamentos();
+        }
+
         private void CarregarAgendamentos()
         {
             try
@@ -26,36 +40,43 @@ namespace teste_de_designe
                 using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
                 {
                     conn.Open();
+
                     string sql = @"
-                    SELECT A.Id, A.Data, A.Horarios, A.Servicos, A.ValorTotal, A.QuantidadePessoas, A.Status, 
-                           U.Nome, U.Telefone, U.Email, U.CPF
-                    FROM Agendamentos A
-                    INNER JOIN Usuarios U ON A.Email = U.Email";
+SELECT
+    S.Id AS ItemServicoId,
+    U.Nome,
+    U.Email,
+    U.Telefone,
+    U.CPF,
+    ISNULL(U.Status,'Ativo') AS StatusUsuario,
+    S.Tipo,
+    S.Servico,
+    S.Data,
+    S.Horario,
+    A.QuantidadePessoas,
+    S.Valor,
+    S.Status
+FROM AgendamentoServicos S
+INNER JOIN Agendamentos A ON A.Id = S.AgendamentoId
+INNER JOIN Usuarios U ON U.Email = A.Email
+ORDER BY S.Data DESC";
 
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    SqlDataReader reader = cmd.ExecuteReader();
+                    SqlDataAdapter da = new SqlDataAdapter(sql, conn);
 
-                    listaAgendamentos.Clear();
-                    while (reader.Read())
-                    {
-                        listaAgendamentos.Add(new Agendamento
-                        {
-                            Id = Convert.ToInt32(reader["Id"]),
-                            Data = Convert.ToDateTime(reader["Data"]),
-                            Horarios = reader["Horarios"].ToString().Split(',').ToList(),
-                            Servicos = reader["Servicos"].ToString().Split(',').ToList(),
-                            ValorTotal = Convert.ToDecimal(reader["ValorTotal"]),
-                            QuantidadePessoas = Convert.ToInt32(reader["QuantidadePessoas"]),
-                            Status = reader["Status"].ToString(),
-                            Nome = reader["Nome"].ToString(),
-                            Telefone = reader["Telefone"].ToString(),
-                            Email = reader["Email"].ToString(),
-                            CPF = reader["CPF"].ToString()
-                        });
-                    }
+                    tabelaAgendamentos = new DataTable();
+                    da.Fill(tabelaAgendamentos);
 
-                    // Preenche o DataGridView com os agendamentos
-                    dgvPainelAdm_Agendamentos.DataSource = listaAgendamentos;
+                    dgvPainelAdm_Agendamentos.DataSource = null;
+                    dgvPainelAdm_Agendamentos.DataSource = tabelaAgendamentos;
+
+                    if (dgvPainelAdm_Agendamentos.Columns.Contains("ItemServicoId"))
+                        dgvPainelAdm_Agendamentos.Columns["ItemServicoId"].Visible = false;
+
+                    dgvPainelAdm_Agendamentos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dgvPainelAdm_Agendamentos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                    dgvPainelAdm_Agendamentos.MultiSelect = false;
+                    dgvPainelAdm_Agendamentos.ReadOnly = true;
+                    dgvPainelAdm_Agendamentos.AllowUserToAddRows = false;
                 }
             }
             catch (Exception ex)
@@ -64,54 +85,203 @@ namespace teste_de_designe
             }
         }
 
-        // Botão para reagendar um agendamento
+        private string PegarValorLinha(DataGridViewRow row, string nomeColuna)
+        {
+            if (row == null)
+                return "";
+
+            if (row.DataBoundItem is DataRowView drv)
+            {
+                if (drv.Row.Table.Columns.Contains(nomeColuna))
+                    return drv[nomeColuna]?.ToString() ?? "";
+            }
+
+            return "";
+        }
+
+        private void Filtro_TextChanged(object sender, EventArgs e)
+        {
+            if (atualizandoPainel)
+                return;
+
+            try
+            {
+                string filtro = "";
+
+                if (!string.IsNullOrWhiteSpace(txtPainelAdm_Nome.Text))
+                    filtro += $"Nome LIKE '%{txtPainelAdm_Nome.Text.Replace("'", "''")}%'";
+
+                if (!string.IsNullOrWhiteSpace(txtPainelAdm_Email.Text))
+                    filtro += (filtro != "" ? " AND " : "") +
+                              $"Email LIKE '%{txtPainelAdm_Email.Text.Replace("'", "''")}%'";
+
+                if (!string.IsNullOrWhiteSpace(mskPainelAdm_Telefone.Text))
+                    filtro += (filtro != "" ? " AND " : "") +
+                              $"Telefone LIKE '%{mskPainelAdm_Telefone.Text.Replace("'", "''")}%'";
+
+                if (!string.IsNullOrWhiteSpace(mskPainelAdm_CPF.Text))
+                    filtro += (filtro != "" ? " AND " : "") +
+                              $"CPF LIKE '%{mskPainelAdm_CPF.Text.Replace("'", "''")}%'";
+
+                tabelaAgendamentos.DefaultView.RowFilter = filtro;
+            }
+            catch
+            {
+            }
+        }
+
+        private void dgvPainelAdm_Agendamentos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            DataGridViewRow row = dgvPainelAdm_Agendamentos.Rows[e.RowIndex];
+
+            txtPainelAdm_Nome.Text = PegarValorLinha(row, "Nome");
+            txtPainelAdm_Email.Text = PegarValorLinha(row, "Email");
+            mskPainelAdm_Telefone.Text = PegarValorLinha(row, "Telefone");
+            mskPainelAdm_CPF.Text = PegarValorLinha(row, "CPF");
+
+            cbbPainelAdm_NovoHorario.Text = PegarValorLinha(row, "Horario");
+
+            string dataTexto = PegarValorLinha(row, "Data");
+            DateTime dataSelecionada;
+
+            if (DateTime.TryParse(dataTexto, out dataSelecionada))
+                dtpPainelAdm_NovaData.Value = dataSelecionada;
+        }
+
+        private void dgvPainelAdm_Agendamentos_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (e.RowIndex < 0)
+                return;
+
+            var row = dgvPainelAdm_Agendamentos.Rows[e.RowIndex];
+
+            string statusItem = PegarValorLinha(row, "Status");
+            string statusUsuario = PegarValorLinha(row, "StatusUsuario");
+
+            if (statusItem == "Ativo")
+                row.DefaultCellStyle.BackColor = Color.LightGreen;
+            else if (statusItem == "Cancelado")
+                row.DefaultCellStyle.BackColor = Color.LightCoral;
+            else if (statusItem == "Pendente")
+                row.DefaultCellStyle.BackColor = Color.Orange;
+
+            if (!string.IsNullOrWhiteSpace(statusUsuario) &&
+                dgvPainelAdm_Agendamentos.Columns.Contains("StatusUsuario"))
+            {
+                if (statusUsuario == "Banido")
+                    row.Cells["StatusUsuario"].Style.ForeColor = Color.DarkRed;
+                else
+                    row.Cells["StatusUsuario"].Style.ForeColor = Color.DarkBlue;
+            }
+        }
+
+        private void CarregarHorariosAdmin()
+        {
+            cbbPainelAdm_NovoHorario.Items.Clear();
+
+            string[] horarios =
+            {
+                "08:00","09:00","10:00","11:00",
+                "13:00","14:00","15:00","16:00",
+                "17:00","18:00"
+            };
+
+            cbbPainelAdm_NovoHorario.Items.AddRange(horarios);
+
+            if (cbbPainelAdm_NovoHorario.Items.Count > 0)
+                cbbPainelAdm_NovoHorario.SelectedIndex = 0;
+        }
+
         private void btnPainelAdmin_Reagendar_Click(object sender, EventArgs e)
         {
             try
             {
-                // Verifica se há uma linha selecionada
-                if (dgvPainelAdm_Agendamentos.SelectedRows.Count > 0)
+                if (dgvPainelAdm_Agendamentos.SelectedRows.Count == 0)
                 {
-                    // Pega o ID do agendamento selecionado
-                    int agendamentoId = Convert.ToInt32(dgvPainelAdm_Agendamentos.SelectedRows[0].Cells["Id"].Value);
+                    MessageBox.Show("Selecione um item.");
+                    return;
+                }
 
-                    // Nova data do agendamento
-                    DateTime novaData = dtpPainelAdm_NovaData.Value;
-                    // Novo horário do agendamento
-                    string novoHorario = cbbPainelAdm_NovoHorario.SelectedItem.ToString();
+                DataGridViewRow row = dgvPainelAdm_Agendamentos.SelectedRows[0];
 
-                    // Verifica se a nova data é no passado
-                    if (novaData < DateTime.Today)
+                int idServico = Convert.ToInt32(PegarValorLinha(row, "ItemServicoId"));
+                string tipoServico = PegarValorLinha(row, "Tipo");
+                string statusAtual = PegarValorLinha(row, "Status");
+                DateTime novaData = dtpPainelAdm_NovaData.Value.Date;
+                string novoHorario = cbbPainelAdm_NovoHorario.Text;
+
+                if (statusAtual == "Cancelado")
+                {
+                    MessageBox.Show("Não é possível reagendar um item cancelado.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(novoHorario))
+                {
+                    MessageBox.Show("Escolha um horário.");
+                    return;
+                }
+
+                if (novaData < DateTime.Today)
+                {
+                    MessageBox.Show("Não pode reagendar para datas passadas.");
+                    return;
+                }
+
+                DateTime dataHoraNova = DateTime.Parse($"{novaData:dd/MM/yyyy} {novoHorario}");
+                if (dataHoraNova < DateTime.Now)
+                {
+                    MessageBox.Show("Não pode reagendar para data e horário passados.");
+                    return;
+                }
+
+                using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
+                {
+                    conn.Open();
+
+                    if (tipoServico == "Doula")
                     {
-                        MessageBox.Show("Você não pode reagendar para datas passadas.");
-                        return;
+                        string sqlVerificar = @"
+SELECT COUNT(*)
+FROM AgendamentoServicos
+WHERE Tipo = 'Doula'
+AND Data = @Data
+AND Horario = @Horario
+AND Status <> 'Cancelado'
+AND Id <> @Id";
+
+                        SqlCommand cmdVerificar = new SqlCommand(sqlVerificar, conn);
+                        cmdVerificar.Parameters.AddWithValue("@Data", novaData);
+                        cmdVerificar.Parameters.AddWithValue("@Horario", novoHorario);
+                        cmdVerificar.Parameters.AddWithValue("@Id", idServico);
+
+                        int quantidade = Convert.ToInt32(cmdVerificar.ExecuteScalar());
+
+                        if (quantidade > 0)
+                        {
+                            MessageBox.Show("Esse horário já está ocupado para a doula.");
+                            return;
+                        }
                     }
 
-                    using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
-                    {
-                        conn.Open();
+                    string sql = @"
+UPDATE AgendamentoServicos
+SET Data=@Data, Horario=@Horario
+WHERE Id=@Id";
 
-                        // Atualiza o agendamento com a nova data e horário
-                        string sqlUpdate = @"
-                        UPDATE Agendamentos
-                        SET Data = @NovaData, Horarios = @NovoHorario
-                        WHERE Id = @AgendamentoId";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@Data", novaData);
+                    cmd.Parameters.AddWithValue("@Horario", novoHorario);
+                    cmd.Parameters.AddWithValue("@Id", idServico);
 
-                        SqlCommand cmd = new SqlCommand(sqlUpdate, conn);
-                        cmd.Parameters.AddWithValue("@NovaData", novaData);
-                        cmd.Parameters.AddWithValue("@NovoHorario", novoHorario);
-                        cmd.Parameters.AddWithValue("@AgendamentoId", agendamentoId);
-
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Agendamento reagendado com sucesso!");
-                    CarregarAgendamentos();  // Atualiza a lista de agendamentos
+                    cmd.ExecuteNonQuery();
                 }
-                else
-                {
-                    MessageBox.Show("Por favor, selecione um agendamento.");
-                }
+
+                MessageBox.Show("Reagendado com sucesso!");
+                CarregarAgendamentos();
             }
             catch (Exception ex)
             {
@@ -119,81 +289,120 @@ namespace teste_de_designe
             }
         }
 
-        // Botão para reembolsar um agendamento
         private void btnPainelAdmin_Reembolsar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dgvPainelAdm_Agendamentos.SelectedRows.Count > 0)
+                if (dgvPainelAdm_Agendamentos.SelectedRows.Count == 0)
                 {
-                    // Pega o ID do agendamento selecionado
-                    int agendamentoId = Convert.ToInt32(dgvPainelAdm_Agendamentos.SelectedRows[0].Cells["Id"].Value);
-
-                    using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
-                    {
-                        conn.Open();
-
-                        // Atualiza o status do agendamento para "Cancelado"
-                        string sqlCancelamento = @"
-                        UPDATE Agendamentos
-                        SET Status = 'Cancelado'
-                        WHERE Id = @AgendamentoId";
-
-                        SqlCommand cmdCancelamento = new SqlCommand(sqlCancelamento, conn);
-                        cmdCancelamento.Parameters.AddWithValue("@AgendamentoId", agendamentoId);
-                        cmdCancelamento.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Agendamento cancelado com sucesso!");
-                    CarregarAgendamentos();  // Atualiza a lista de agendamentos
+                    MessageBox.Show("Selecione um item.");
+                    return;
                 }
-                else
+
+                DataGridViewRow row = dgvPainelAdm_Agendamentos.SelectedRows[0];
+                int idServico = Convert.ToInt32(PegarValorLinha(row, "ItemServicoId"));
+
+                using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
                 {
-                    MessageBox.Show("Por favor, selecione um agendamento.");
+                    conn.Open();
+
+                    string sql = "UPDATE AgendamentoServicos SET Status='Cancelado' WHERE Id=@Id";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@Id", idServico);
+
+                    cmd.ExecuteNonQuery();
                 }
+
+                MessageBox.Show("Reembolso realizado!");
+                CarregarAgendamentos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao realizar o reembolso: " + ex.Message);
+                MessageBox.Show("Erro ao reembolsar: " + ex.Message);
             }
         }
 
-        // Botão para banir um usuário
         private void btnPainelAdmin_Banir_Usuario_Click(object sender, EventArgs e)
+        {
+            AtualizarStatusUsuario("Banido");
+        }
+
+        private void btnPainelAdmin_DesbanirUsuario_Click(object sender, EventArgs e)
+        {
+            AtualizarStatusUsuario("Ativo");
+        }
+
+        private void AtualizarStatusUsuario(string status)
         {
             try
             {
-                if (dgvPainelAdm_Agendamentos.SelectedRows.Count > 0)
+                if (dgvPainelAdm_Agendamentos.SelectedRows.Count == 0)
                 {
-                    // Pega o e-mail do usuário
-                    string emailUsuario = dgvPainelAdm_Agendamentos.SelectedRows[0].Cells["Email"].Value.ToString();
-
-                    using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
-                    {
-                        conn.Open();
-
-                        // Atualiza o status do usuário para "Banido"
-                        string sqlBanir = @"
-                        UPDATE Usuarios
-                        SET Status = 'Banido'
-                        WHERE Email = @EmailUsuario";
-
-                        SqlCommand cmdBanir = new SqlCommand(sqlBanir, conn);
-                        cmdBanir.Parameters.AddWithValue("@EmailUsuario", emailUsuario);
-                        cmdBanir.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show("Usuário banido com sucesso!");
-                    CarregarAgendamentos();  // Atualiza a lista de agendamentos
+                    MessageBox.Show("Selecione um usuário.");
+                    return;
                 }
-                else
+
+                DataGridViewRow row = dgvPainelAdm_Agendamentos.SelectedRows[0];
+                string emailUsuario = PegarValorLinha(row, "Email");
+
+                if (string.IsNullOrWhiteSpace(emailUsuario))
                 {
-                    MessageBox.Show("Por favor, selecione um usuário.");
+                    MessageBox.Show("Não foi possível localizar o e-mail do usuário.");
+                    return;
                 }
+
+                using (SqlConnection conn = new SqlConnection(Conexao.StringConexao))
+                {
+                    conn.Open();
+
+                    string sql = "UPDATE Usuarios SET Status=@Status WHERE Email=@Email";
+
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@Status", status);
+                    cmd.Parameters.AddWithValue("@Email", emailUsuario);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Status atualizado com sucesso!");
+                CarregarAgendamentos();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao banir o usuário: " + ex.Message);
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+        }
+
+        private void btnPainelAdmin_Atualizar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                atualizandoPainel = true;
+
+                txtPainelAdm_Nome.Clear();
+                txtPainelAdm_Email.Clear();
+                mskPainelAdm_Telefone.Clear();
+                mskPainelAdm_CPF.Clear();
+
+                CarregarHorariosAdmin();
+
+                if (cbbPainelAdm_NovoHorario.Items.Count > 0)
+                    cbbPainelAdm_NovoHorario.SelectedIndex = 0;
+                else
+                    cbbPainelAdm_NovoHorario.Text = "";
+
+                dtpPainelAdm_NovaData.Value = DateTime.Today;
+
+                CarregarAgendamentos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao atualizar painel: " + ex.Message);
+            }
+            finally
+            {
+                atualizandoPainel = false;
             }
         }
     }

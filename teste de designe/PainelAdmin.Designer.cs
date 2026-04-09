@@ -43,6 +43,8 @@
             mskPainelAdm_CPF = new MaskedTextBox();
             dtpPainelAdm_NovaData = new DateTimePicker();
             cbbPainelAdm_NovoHorario = new ComboBox();
+            btnPainelAdmin_DesbanirUsuario = new Button();
+            btnPainelAdmin_Atualizar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvPainelAdm_Agendamentos).BeginInit();
             SuspendLayout();
             // 
@@ -53,6 +55,8 @@
             dgvPainelAdm_Agendamentos.Name = "dgvPainelAdm_Agendamentos";
             dgvPainelAdm_Agendamentos.Size = new Size(795, 273);
             dgvPainelAdm_Agendamentos.TabIndex = 0;
+            dgvPainelAdm_Agendamentos.CellClick += dgvPainelAdm_Agendamentos_CellClick;
+            dgvPainelAdm_Agendamentos.RowPrePaint += dgvPainelAdm_Agendamentos_RowPrePaint;
             // 
             // btnPainelAdmin_Reagendar
             // 
@@ -68,7 +72,7 @@
             // btnPainelAdmin_Reembolsar
             // 
             btnPainelAdmin_Reembolsar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnPainelAdmin_Reembolsar.Location = new Point(137, 415);
+            btnPainelAdmin_Reembolsar.Location = new Point(153, 415);
             btnPainelAdmin_Reembolsar.Name = "btnPainelAdmin_Reembolsar";
             btnPainelAdmin_Reembolsar.Size = new Size(104, 26);
             btnPainelAdmin_Reembolsar.TabIndex = 2;
@@ -79,7 +83,7 @@
             // btnPainelAdmin_Banir_Usuario
             // 
             btnPainelAdmin_Banir_Usuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            btnPainelAdmin_Banir_Usuario.Location = new Point(268, 415);
+            btnPainelAdmin_Banir_Usuario.Location = new Point(294, 415);
             btnPainelAdmin_Banir_Usuario.Name = "btnPainelAdmin_Banir_Usuario";
             btnPainelAdmin_Banir_Usuario.Size = new Size(104, 26);
             btnPainelAdmin_Banir_Usuario.TabIndex = 3;
@@ -181,11 +185,35 @@
             cbbPainelAdm_NovoHorario.Size = new Size(121, 23);
             cbbPainelAdm_NovoHorario.TabIndex = 16;
             // 
+            // btnPainelAdmin_DesbanirUsuario
+            // 
+            btnPainelAdmin_DesbanirUsuario.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPainelAdmin_DesbanirUsuario.Location = new Point(435, 415);
+            btnPainelAdmin_DesbanirUsuario.Name = "btnPainelAdmin_DesbanirUsuario";
+            btnPainelAdmin_DesbanirUsuario.Size = new Size(122, 26);
+            btnPainelAdmin_DesbanirUsuario.TabIndex = 17;
+            btnPainelAdmin_DesbanirUsuario.Text = "Desbanir Usuário";
+            btnPainelAdmin_DesbanirUsuario.UseVisualStyleBackColor = true;
+            btnPainelAdmin_DesbanirUsuario.Click += btnPainelAdmin_DesbanirUsuario_Click;
+            // 
+            // btnPainelAdmin_Atualizar
+            // 
+            btnPainelAdmin_Atualizar.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnPainelAdmin_Atualizar.Location = new Point(594, 415);
+            btnPainelAdmin_Atualizar.Name = "btnPainelAdmin_Atualizar";
+            btnPainelAdmin_Atualizar.Size = new Size(104, 26);
+            btnPainelAdmin_Atualizar.TabIndex = 18;
+            btnPainelAdmin_Atualizar.Text = "Atualizar";
+            btnPainelAdmin_Atualizar.UseVisualStyleBackColor = true;
+            btnPainelAdmin_Atualizar.Click += btnPainelAdmin_Atualizar_Click;
+            // 
             // PainelAdmin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnPainelAdmin_Atualizar);
+            Controls.Add(btnPainelAdmin_DesbanirUsuario);
             Controls.Add(cbbPainelAdm_NovoHorario);
             Controls.Add(dtpPainelAdm_NovaData);
             Controls.Add(mskPainelAdm_CPF);
@@ -225,5 +253,7 @@
         private MaskedTextBox mskPainelAdm_CPF;
         private DateTimePicker dtpPainelAdm_NovaData;
         private ComboBox cbbPainelAdm_NovoHorario;
+        private Button btnPainelAdmin_DesbanirUsuario;
+        private Button btnPainelAdmin_Atualizar;
     }
 }
